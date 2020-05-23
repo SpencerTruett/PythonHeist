@@ -1,4 +1,7 @@
 import os
+from random import seed
+from random import randint
+import random
 
 clear = lambda: os.system('cls')
 
@@ -8,16 +11,16 @@ listOfTeamMembers = []
 print("Plan Your Heist!")
 
 while True:
-    teamMemberDictionary = {}
+    teamMemberDictionary = {'key' : 'value'}
     teamMemeberName = input("Please Enter a Name (Or leave blank to move on): ")
-    teamMemberDictionary.append("Name", teamMemeberName)
+    teamMemberDictionary['Name'] = teamMemeberName
 
     if teamMemeberName != "":
         teamMemberSkill = input("Please Enter their Skill level (1-20): ")
-        teamMemberDictionary.append("Skill", teamMemberSkill)
+        teamMemberDictionary['Skill'] = teamMemberSkill
 
         teamMemberCourage = input("Please Enter their Courage Factor (0.0 - 2.0): ")
-        teamMemberDictionary.append("Courage", teamMemberCourage)
+        teamMemberDictionary['Courage'] = teamMemberCourage
 
         listOfTeamMembers.append(teamMemberDictionary)
 
@@ -37,9 +40,29 @@ while True:
         for member in listOfTeamMembers:
             skillLevel = teamMemberDictionary.get("Skill")
             skillNumber = int(skillLevel)
-            combinedSkill += skillNumber
+            combinedSkillLevel += skillNumber
 
         clear()
 
-        for (i = 1; i <= trialRunsNumber; i += 1):
-            
+        for _ in range(trialRunsNumber):
+            random.seed()
+            for _ in range(1):
+                luckValue = randint(1, 3)
+            totalBankDifficulty = bankDifficultyNumber + luckValue
+
+            print("Team's Comined Skill: ", + combinedSkillLevel)
+            print("Bank Difficulty: ", + totalBankDifficulty)
+            print("Luck Value: ", + luckValue)
+
+            if combinedSkillLevel >= totalBankDifficulty:
+                print("You could pull off this heist!")
+                print("--------------")
+                successfulRun += 1
+            else:
+                print("Not a chance. Recruit some more and try again.")
+                print("--------------")
+                unsuccessfulRun += 1
+
+        print("---------------------------")
+        print("You succeeded ", + successfulRun, " times! And Failed ", + unsuccessfulRun, " times!")
+        break
