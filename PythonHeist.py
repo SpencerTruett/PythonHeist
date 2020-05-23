@@ -16,10 +16,10 @@ while True:
     teamMemberDictionary['Name'] = teamMemeberName
 
     if teamMemeberName != "":
-        teamMemberSkill = input("Please Enter their Skill level (1-20): ")
+        teamMemberSkill = int(input("Please Enter their Skill level (1-20): "))
         teamMemberDictionary['Skill'] = teamMemberSkill
 
-        teamMemberCourage = input("Please Enter their Courage Factor (0.0 - 2.0): ")
+        teamMemberCourage = float(input("Please Enter their Courage Factor (0.0 - 2.0): "))
         teamMemberDictionary['Courage'] = teamMemberCourage
 
         listOfTeamMembers.append(teamMemberDictionary)
@@ -37,9 +37,10 @@ while True:
         successfulRun = 0
         unsuccessfulRun = 0
 
-        for member in listOfTeamMembers:
-            skillLevel = teamMemberDictionary.get("Skill")
-            skillNumber = int(skillLevel)
+        for teamMemberDictionary in listOfTeamMembers:
+            skillLevel = teamMemberDictionary["Skill"]
+            skillNumber = skillLevel
+            combinedSkillLevel = 0
             combinedSkillLevel += skillNumber
 
         clear()
