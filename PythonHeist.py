@@ -22,7 +22,10 @@ while True:
         teamMemberCourage = float(input("Please Enter their Courage Factor (0.0 - 2.0): "))
         teamMemberDictionary['Courage'] = teamMemberCourage
 
-        listOfTeamMembers.append(teamMemberDictionary)
+        dictionaryCopy = teamMemberDictionary.copy()
+
+        #yourlist.append(yourdict.copy())
+        listOfTeamMembers.append(dictionaryCopy)
 
         clear()
 
@@ -37,11 +40,7 @@ while True:
         successfulRun = 0
         unsuccessfulRun = 0
 
-        for teamMemberDictionary in listOfTeamMembers:
-            skillLevel = teamMemberDictionary["Skill"]
-            skillNumber = skillLevel
-            combinedSkillLevel = 0
-            combinedSkillLevel += skillNumber
+        combinedSkillLevel = sum(item['Skill'] for item in listOfTeamMembers)
 
         clear()
 
